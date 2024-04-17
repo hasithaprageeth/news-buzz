@@ -8,16 +8,7 @@ const Newsboard = ({ category }) => {
     let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${
       import.meta.env.VITE_API_KEY
     }`;
-  
-    // Create custom headers
-    const headers = new Headers();
-    headers.append('Origin', 'http://localhost:5174');
-    headers.append('Referer', 'http://localhost:5174/');
-  
-    fetch(url, {
-      method: 'GET', // Assuming you are making a GET request
-      headers: headers // Set custom headers
-    })
+    fetch(url)
       .then((response) => response.json())
       .then((data) => setArticles(data.articles));
   }, [category]);
